@@ -107,4 +107,747 @@
     .btn-primary:active { box-shadow: 0 2px 0 var(--primary-dark); }
 
     .btn-accent {
-      background
+      background: linear-gradient(135deg, var(--accent), #96C995);
+      color: #fff;
+      box-shadow: 0 5px 0 var(--accent-dark);
+    }
+    .btn-accent:active { box-shadow: 0 2px 0 var(--accent-dark); }
+
+    .btn-blue {
+      background: linear-gradient(135deg, var(--blue), #7BBCE8);
+      color: #fff;
+      box-shadow: 0 5px 0 var(--blue-dark);
+    }
+    .btn-blue:active { box-shadow: 0 2px 0 var(--blue-dark); }
+
+    .btn-purple {
+      background: linear-gradient(135deg, var(--purple), #B39AEF);
+      color: #fff;
+      box-shadow: 0 5px 0 var(--purple-dark);
+    }
+    .btn-purple:active { box-shadow: 0 2px 0 var(--purple-dark); }
+
+    .btn:disabled {
+      background: #D3CBC4 !important;
+      box-shadow: 0 5px 0 #B5ADA6 !important;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background: #FFFFFF;
+      color: var(--primary);
+      border: 3px solid var(--primary);
+      box-shadow: 0 4px 0 #FFD2C4;
+    }
+    .btn-secondary:active { box-shadow: 0 1px 0 #FFD2C4; }
+
+    .btn-back {
+      background: #EFE7DC;
+      color: var(--text-main);
+      padding: 12px;
+      font-size: 0.95rem;
+      margin-top: 18px;
+      box-shadow: none;
+    }
+
+    /* ホーム画面 */
+    .home-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .home-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .home-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 9px;
+      font-weight: bold;
+    }
+
+    /* カード共通 */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 20px 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toggle-all-btn {
+      font-size: 0.78rem;
+      background: #FFF0E5;
+      color: var(--primary);
+      border: none;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* カテゴリチェックボックス */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .cat-checkbox { display: none; }
+
+    .cat-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: #FAF5EE;
+      border: 2px solid #EAE0D5;
+      border-radius: 12px;
+      padding: 10px 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .cat-checkbox:checked + .cat-label {
+      background: #FFF0E6;
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    .cat-label::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 2px solid #C8BDB2;
+      background: #fff;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .cat-checkbox:checked + .cat-label::before {
+      content: "✓";
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      font-size: 11px;
+      line-height: 13px;
+      text-align: center;
+    }
+
+    /* ドラムルーレット演出 */
+    .drum-wrapper {
+      position: relative;
+      height: 104px;
+      background: #FFF9EB;
+      border: 4px solid var(--secondary);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 14px 0 16px;
+      box-shadow: inset 0 5px 10px rgba(0,0,0,0.07);
+    }
+
+    .drum-wrapper::before,
+    .drum-wrapper::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 18px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .drum-wrapper::before {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0));
+    }
+
+    .drum-wrapper::after {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(255,255,255,0.85), rgba(255,255,255,0));
+    }
+
+    .drum-reel {
+      display: flex;
+      flex-direction: column;
+      will-change: transform;
+    }
+
+    .drum-item {
+      height: 96px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .drum-item-cat {
+      font-size: 0.72rem;
+      background: var(--secondary);
+      color: #fff;
+      padding: 2px 9px;
+      border-radius: 10px;
+      margin-bottom: 4px;
+      font-weight: bold;
+    }
+
+    .drum-item-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .drum-wrapper.decided {
+      border-color: var(--primary);
+      background: #FFF2EA;
+      animation: popScale 0.35s ease;
+    }
+
+    @keyframes popScale {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .result-badge {
+      text-align: center;
+      font-size: 0.98rem;
+      font-weight: bold;
+      color: var(--primary);
+      min-height: 22px;
+      margin-bottom: 6px;
+    }
+
+    /* 献立リスト画面のタブ */
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+      background: #EFE7DC;
+      padding: 5px;
+      border-radius: 14px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 10px 6px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .tab-btn.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .list-group { margin-bottom: 18px; }
+
+    .list-cat-header {
+      background: var(--secondary);
+      color: #fff;
+      font-weight: bold;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .menu-items-ul {
+      list-style: none;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .menu-items-ul li {
+      padding: 12px 15px;
+      border-bottom: 1px solid #F3ECE4;
+      font-size: 0.98rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .menu-items-ul li:last-child { border-bottom: none; }
+    .menu-items-ul li::before { content: "🐾"; font-size: 0.85rem; }
+
+    .status-msg {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🐾 コジローの気まぐれ食堂</h1>
+    <p>迷った時はコジ様へ</p>
+  </header>
+
+  <div class="container">
+    <div id="loading-screen" class="screen active">
+      <div class="status-msg">コジ様がメニューを準備中...</div>
+    </div>
+
+    <!-- ① ホーム画面 -->
+    <div id="home-screen" class="screen">
+      <div class="home-menu">
+        <div class="home-card">
+          <div class="home-card-desc">作る気力があるかさえ迷ったら…</div>
+          <button class="btn btn-purple" onclick="showScreen('decide-mode-screen')">
+            🤔 作る？外食？どっちにする！
+          </button>
+        </div>
+
+        <div class="home-card">
+          <div class="home-card-desc">今日のメイン料理を決める</div>
+          <button class="btn btn-primary" onclick="showScreen('main-screen')">
+            🍳 メイン献立ルーレット！
+          </button>
+        </div>
+
+        <div class="home-card">
+          <div class="home-card-desc">副菜・スープなどあと1品を決める</div>
+          <button class="btn btn-accent" onclick="showScreen('side-screen')">
+            🥗 もう一品ルーレット！
+          </button>
+        </div>
+
+        <div class="home-card">
+          <div class="home-card-desc">外食・デリバリーのお店を決める</div>
+          <button class="btn btn-blue" onclick="showScreen('eatout-screen')">
+            🚗 外食・宅配ルーレット！
+          </button>
+        </div>
+
+        <div class="home-card">
+          <button class="btn btn-secondary" onclick="showScreen('list-screen')">
+            📖 お品書きを一覧で見る
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② 作る？外食？判定画面 -->
+    <div id="decide-mode-screen" class="screen">
+      <div class="card">
+        <div class="section-title">
+          <span>今日のスタイルを抽選！</span>
+        </div>
+
+        <div id="mode-badge" class="result-badge"></div>
+
+        <div id="mode-drum-wrapper" class="drum-wrapper">
+          <div id="mode-drum-reel" class="drum-reel">
+            <div class="drum-item">
+              <div class="drum-item-name" style="color:#8C7F73; font-size:1.1rem;">コジ様の気分次第…</div>
+            </div>
+          </div>
+        </div>
+
+        <button id="mode-spin-btn" class="btn btn-purple" onclick="startModeRoulette()">
+          🐾 コジ様に聞く！
+        </button>
+
+        <div id="mode-next-action" style="margin-top: 14px; display: none;"></div>
+      </div>
+
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+    </div>
+
+    <!-- ③ メイン献立ルーレット画面 -->
+    <div id="main-screen" class="screen">
+      <div class="card">
+        <div class="section-title">
+          <span>メインのジャンル絞り込み</span>
+          <button type="button" class="toggle-all-btn" onclick="toggleAll('main')">全選択 / 解除</button>
+        </div>
+        <div id="main-filters" class="category-grid"></div>
+
+        <div id="main-badge" class="result-badge"></div>
+
+        <div id="main-drum-wrapper" class="drum-wrapper">
+          <div id="main-drum-reel" class="drum-reel">
+            <div class="drum-item">
+              <div class="drum-item-name" style="color:#8C7F73; font-size:1.05rem;">ボタンを押してスタート！</div>
+            </div>
+          </div>
+        </div>
+
+        <button id="main-spin-btn" class="btn btn-primary" onclick="startDatasetRoulette('main')">
+          🐾 メインルーレットを回す！
+        </button>
+
+        <div id="main-next-action" style="margin-top: 12px; display: none;">
+          <button class="btn btn-accent" onclick="showScreen('side-screen')">🥗 続けて「もう一品」も決める</button>
+        </div>
+      </div>
+
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+    </div>
+
+    <!-- ④ もう一品ルーレット画面 -->
+    <div id="side-screen" class="screen">
+      <div class="card">
+        <div class="section-title">
+          <span>もう一品のジャンル絞り込み</span>
+          <button type="button" class="toggle-all-btn" onclick="toggleAll('side')">全選択 / 解除</button>
+        </div>
+        <div id="side-filters" class="category-grid"></div>
+
+        <div id="side-badge" class="result-badge"></div>
+
+        <div id="side-drum-wrapper" class="drum-wrapper">
+          <div id="side-drum-reel" class="drum-reel">
+            <div class="drum-item">
+              <div class="drum-item-name" style="color:#8C7F73; font-size:1.05rem;">ボタンを押してスタート！</div>
+            </div>
+          </div>
+        </div>
+
+        <button id="side-spin-btn" class="btn btn-accent" onclick="startDatasetRoulette('side')">
+          🥗 もう一品ルーレットを回す！
+        </button>
+      </div>
+
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+    </div>
+
+    <!-- ⑤ 外食・宅配ルーレット画面 -->
+    <div id="eatout-screen" class="screen">
+      <div class="card">
+        <div class="section-title">
+          <span>外食・宅配の絞り込み</span>
+          <button type="button" class="toggle-all-btn" onclick="toggleAll('eatout')">全選択 / 解除</button>
+        </div>
+        <div id="eatout-filters" class="category-grid"></div>
+
+        <div id="eatout-badge" class="result-badge"></div>
+
+        <div id="eatout-drum-wrapper" class="drum-wrapper">
+          <div id="eatout-drum-reel" class="drum-reel">
+            <div class="drum-item">
+              <div class="drum-item-name" style="color:#8C7F73; font-size:1.05rem;">ボタンを押してスタート！</div>
+            </div>
+          </div>
+        </div>
+
+        <button id="eatout-spin-btn" class="btn btn-blue" onclick="startDatasetRoulette('eatout')">
+          🚗 お店ルーレットを回す！
+        </button>
+      </div>
+
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+    </div>
+
+    <!-- ⑥ 一覧リスト画面 -->
+    <div id="list-screen" class="screen">
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchListTab('main', this)">🍳 メイン</button>
+        <button class="tab-btn" onclick="switchListTab('side', this)">🥗 もう一品</button>
+        <button class="tab-btn" onclick="switchListTab('eatout', this)">🚗 外食・宅配</button>
+      </div>
+      <div id="list-content"></div>
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+    </div>
+  </div>
+
+  <script>
+    const datasets = {
+      main: {
+        items: [],
+        categories: [],
+        defaultBtnText: '🐾 メインルーレットを回す！',
+        decidedText: '🐾 コジ様が今日のメインを決定！ 🐾'
+      },
+      side: {
+        items: [],
+        categories: [],
+        defaultBtnText: '🥗 もう一品ルーレットを回す！',
+        decidedText: '🐾 コジ様がもう一品を決定！ 🐾'
+      },
+      eatout: {
+        items: [],
+        categories: [],
+        defaultBtnText: '🚗 お店ルーレットを回す！',
+        decidedText: '🐾 コジ様が今日のお店を決定！ 🐾'
+      }
+    };
+
+    const ITEM_HEIGHT = 96;
+    let isSpinning = false;
+
+    // 初期化：3つのCSVを並列読み込み
+    async function init() {
+      try {
+        const ts = Date.now();
+        const [mainText, sideText, eatoutText] = await Promise.all([
+          fetchCSV(`./main.csv?t=${ts}`),
+          fetchCSV(`./side.csv?t=${ts}`),
+          fetchCSV(`./eatout.csv?t=${ts}`)
+        ]);
+
+        parseCSV(mainText, 'main');
+        parseCSV(sideText, 'side');
+        parseCSV(eatoutText, 'eatout');
+
+        renderFilters('main');
+        renderFilters('side');
+        renderFilters('eatout');
+        renderList('main');
+
+        showScreen('home-screen');
+      } catch (err) {
+        document.getElementById('loading-screen').innerHTML = `
+          <div class="card" style="text-align:center; color:#D9534F;">
+            <p style="font-weight:bold; margin-bottom:8px;">⚠️ CSVデータを読み込めませんでした</p>
+            <p style="font-size:0.85rem;">同階層に <code>main.csv</code> / <code>side.csv</code> / <code>eatout.csv</code> が配置されているか確認してください。</p>
+          </div>
+        `;
+      }
+    }
+
+    async function fetchCSV(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to load ${url}`);
+      return await res.text();
+    }
+
+    function parseCSV(csvText, key) {
+      const lines = csvText.trim().split(/\r?\n/);
+      const items = [];
+      const catSet = new Set();
+
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+        const cols = line.split(',').map(s => s.replace(/^"|"$/g, '').trim());
+        if (cols.length >= 2 && cols[0] && cols[1]) {
+          items.push({ category: cols[0], name: cols[1] });
+          catSet.add(cols[0]);
+        }
+      }
+      datasets[key].items = items;
+      datasets[key].categories = Array.from(catSet);
+    }
+
+    function showScreen(screenId) {
+      if (isSpinning) return;
+      document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // チェックボックス描画
+    function renderFilters(key) {
+      const container = document.getElementById(`${key}-filters`);
+      container.innerHTML = datasets[key].categories.map((cat, idx) => `
+        <div>
+          <input type="checkbox" id="${key}-cat-${idx}" class="cat-checkbox ${key}-cb" value="${escapeHTML(cat)}" checked onchange="updateButtonState('${key}')">
+          <label for="${key}-cat-${idx}" class="cat-label">${escapeHTML(cat)}</label>
+        </div>
+      `).join('');
+    }
+
+    function toggleAll(key) {
+      if (isSpinning) return;
+      const cbs = document.querySelectorAll(`.${key}-cb`);
+      const allChecked = Array.from(cbs).every(cb => cb.checked);
+      cbs.forEach(cb => cb.checked = !allChecked);
+      updateButtonState(key);
+    }
+
+    function updateButtonState(key) {
+      const checkedCount = document.querySelectorAll(`.${key}-cb:checked`).length;
+      const btn = document.getElementById(`${key}-spin-btn`);
+      btn.disabled = checkedCount === 0;
+      btn.textContent = checkedCount === 0 ? 'ジャンルを1つ以上選んでね' : datasets[key].defaultBtnText;
+    }
+
+    // 汎用ドラムアニメーション関数
+    function spinDrum({ reelId, wrapperId, candidates, durationMs }) {
+      const reel = document.getElementById(reelId);
+      const wrapper = document.getElementById(wrapperId);
+      wrapper.classList.remove('decided');
+
+      const winner = candidates[Math.floor(Math.random() * candidates.length)];
+      const totalItems = 28;
+      const reelItems = [];
+
+      for (let i = 0; i < totalItems - 1; i++) {
+        reelItems.push(candidates[Math.floor(Math.random() * candidates.length)]);
+      }
+      reelItems.push(winner);
+
+      reel.style.transition = 'none';
+      reel.style.transform = 'translateY(0px)';
+      reel.innerHTML = reelItems.map(item => `
+        <div class="drum-item">
+          ${item.category ? `<span class="drum-item-cat">${escapeHTML(item.category)}</span>` : ''}
+          <div class="drum-item-name">${escapeHTML(item.name)}</div>
+        </div>
+      `).join('');
+
+      reel.offsetHeight; // リフロー強制
+
+      const targetY = -((totalItems - 1) * ITEM_HEIGHT);
+      reel.style.transition = `transform ${durationMs}ms cubic-bezier(0.12, 0.85, 0.22, 1)`;
+      reel.style.transform = `translateY(${targetY}px)`;
+
+      return winner;
+    }
+
+    // ① 作る？外食？ルーレット（50% : 50%）
+    function startModeRoulette() {
+      if (isSpinning) return;
+      isSpinning = true;
+
+      const btn = document.getElementById('mode-spin-btn');
+      const badge = document.getElementById('mode-badge');
+      const nextAction = document.getElementById('mode-next-action');
+      btn.disabled = true;
+      btn.textContent = 'コジ様が考え中...';
+      badge.textContent = '';
+      nextAction.style.display = 'none';
+
+      const modeCandidates = [
+        { category: 'おうちごはん', name: '🍳 家で作る！', mode: 'main' },
+        { category: 'おでかけ・楽ちん', name: '🚗 外食・宅配にする！', mode: 'eatout' }
+      ];
+
+      const winner = spinDrum({
+        reelId: 'mode-drum-reel',
+        wrapperId: 'mode-drum-wrapper',
+        candidates: modeCandidates,
+        durationMs: 2400
+      });
+
+      setTimeout(() => {
+        isSpinning = false;
+        document.getElementById('mode-drum-wrapper').classList.add('decided');
+        badge.textContent = '🐾 コジ様のお告げが出た！ 🐾';
+        btn.disabled = false;
+        btn.textContent = '🔄 もう一回コジ様に聞く！';
+
+        nextAction.style.display = 'block';
+        if (winner.mode === 'main') {
+          nextAction.innerHTML = `<button class="btn btn-primary" onclick="showScreen('main-screen')">👉 メイン献立ルーレットへ進む</button>`;
+        } else {
+          nextAction.innerHTML = `<button class="btn btn-blue" onclick="showScreen('eatout-screen')">👉 外食・宅配ルーレットへ進む</button>`;
+        }
+      }, 2450);
+    }
+
+    // ② 共通データセットルーレット（main / side / eatout）
+    function startDatasetRoulette(key) {
+      if (isSpinning) return;
+
+      const selectedCats = Array.from(document.querySelectorAll(`.${key}-cb:checked`)).map(cb => cb.value);
+      const candidates = datasets[key].items.filter(i => selectedCats.includes(i.category));
+      if (candidates.length === 0) return;
+
+      isSpinning = true;
+      const btn = document.getElementById(`${key}-spin-btn`);
+      const badge = document.getElementById(`${key}-badge`);
+      btn.disabled = true;
+      btn.textContent = 'コジ様が考え中...';
+      badge.textContent = '';
+
+      if (key === 'main') {
+        document.getElementById('main-next-action').style.display = 'none';
+      }
+
+      spinDrum({
+        reelId: `${key}-drum-reel`,
+        wrapperId: `${key}-drum-wrapper`,
+        candidates: candidates,
+        durationMs: 2600
+      });
+
+      setTimeout(() => {
+        isSpinning = false;
+        document.getElementById(`${key}-drum-wrapper`).classList.add('decided');
+        badge.textContent = datasets[key].decidedText;
+        btn.disabled = false;
+        btn.textContent = '🔄 もう一回回す！';
+
+        if (key === 'main') {
+          document.getElementById('main-next-action').style.display = 'block';
+        }
+      }, 2650);
+    }
+
+    // ③ 一覧リスト描画・タブ切り替え
+    function switchListTab(key, btnEl) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      renderList(key);
+    }
+
+    function renderList(key) {
+      const container = document.getElementById('list-content');
+      const { items, categories } = datasets[key];
+
+      container.innerHTML = categories.map(cat => {
+        const filtered = items.filter(m => m.category === cat);
+        return `
+          <div class="list-group">
+            <div class="list-cat-header">
+              <span>${escapeHTML(cat)}</span>
+              <span>${filtered.length}件</span>
+            </div>
+            <ul class="menu-items-ul">
+              ${filtered.map(item => `<li>${escapeHTML(item.name)}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>"']/g, match => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[match]));
+    }
+
+    init();
+  </script>
+</body>
+</html>
