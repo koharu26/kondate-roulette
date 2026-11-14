@@ -401,7 +401,7 @@
     }
 
     .menu-items-ul li:last-child { border-bottom: none; }
-    .menu-items-ul li::before { content: "🐾"; font-size: 0.85rem; }
+    .menu-items-ul li::before { content: "🍽️"; font-size: 0.85rem; }
 
     .status-msg {
       text-align: center;
@@ -414,12 +414,12 @@
 
   <header>
     <h1>🐾 コジローの気まぐれ食堂</h1>
-    <p>迷った時はコジ様へ</p>
+    <p>迷った時はコジのお告げを</p>
   </header>
 
   <div class="container">
     <div id="loading-screen" class="screen active">
-      <div class="status-msg">コジ様がメニューを準備中...</div>
+      <div class="status-msg">献立データを読み込み中...</div>
     </div>
 
     <!-- ① ホーム画面 -->
@@ -455,7 +455,7 @@
 
         <div class="home-card">
           <button class="btn btn-secondary" onclick="showScreen('list-screen')">
-            📖 お品書きを一覧で見る
+            📖 登録リストを一覧で見る
           </button>
         </div>
       </div>
@@ -473,19 +473,19 @@
         <div id="mode-drum-wrapper" class="drum-wrapper">
           <div id="mode-drum-reel" class="drum-reel">
             <div class="drum-item">
-              <div class="drum-item-name" style="color:#8C7F73; font-size:1.1rem;">コジ様の気分次第…</div>
+              <div class="drum-item-name" style="color:#8C7F73; font-size:1.1rem;">どっちになるかな？</div>
             </div>
           </div>
         </div>
 
         <button id="mode-spin-btn" class="btn btn-purple" onclick="startModeRoulette()">
-          🐾 コジ様に聞く！
+          🎲 運命のルーレットを回す！
         </button>
 
         <div id="mode-next-action" style="margin-top: 14px; display: none;"></div>
       </div>
 
-      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← トップに戻る</button>
     </div>
 
     <!-- ③ メイン献立ルーレット画面 -->
@@ -508,7 +508,7 @@
         </div>
 
         <button id="main-spin-btn" class="btn btn-primary" onclick="startDatasetRoulette('main')">
-          🐾 メインルーレットを回す！
+          🎲 メインルーレットを回す！
         </button>
 
         <div id="main-next-action" style="margin-top: 12px; display: none;">
@@ -516,7 +516,7 @@
         </div>
       </div>
 
-      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← トップに戻る</button>
     </div>
 
     <!-- ④ もう一品ルーレット画面 -->
@@ -543,7 +543,7 @@
         </button>
       </div>
 
-      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← トップに戻る</button>
     </div>
 
     <!-- ⑤ 外食・宅配ルーレット画面 -->
@@ -570,7 +570,7 @@
         </button>
       </div>
 
-      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← トップに戻る</button>
     </div>
 
     <!-- ⑥ 一覧リスト画面 -->
@@ -581,7 +581,7 @@
         <button class="tab-btn" onclick="switchListTab('eatout', this)">🚗 外食・宅配</button>
       </div>
       <div id="list-content"></div>
-      <button class="btn btn-back" onclick="showScreen('home-screen')">← お店の入口に戻る</button>
+      <button class="btn btn-back" onclick="showScreen('home-screen')">← トップに戻る</button>
     </div>
   </div>
 
@@ -590,20 +590,20 @@
       main: {
         items: [],
         categories: [],
-        defaultBtnText: '🐾 メインルーレットを回す！',
-        decidedText: '🐾 コジ様が今日のメインを決定！ 🐾'
+        defaultBtnText: '🎲 メインルーレットを回す！',
+        decidedText: '🎉 今日のメインはこれに決定！ 🎉'
       },
       side: {
         items: [],
         categories: [],
         defaultBtnText: '🥗 もう一品ルーレットを回す！',
-        decidedText: '🐾 コジ様がもう一品を決定！ 🐾'
+        decidedText: '🎉 もう一品はこれに決定！ 🎉'
       },
       eatout: {
         items: [],
         categories: [],
         defaultBtnText: '🚗 お店ルーレットを回す！',
-        decidedText: '🐾 コジ様が今日のお店を決定！ 🐾'
+        decidedText: '🎉 今日のお店はここに決定！ 🎉'
       }
     };
 
@@ -739,7 +739,7 @@
       const badge = document.getElementById('mode-badge');
       const nextAction = document.getElementById('mode-next-action');
       btn.disabled = true;
-      btn.textContent = 'コジ様が考え中...';
+      btn.textContent = '抽選中...';
       badge.textContent = '';
       nextAction.style.display = 'none';
 
@@ -758,9 +758,9 @@
       setTimeout(() => {
         isSpinning = false;
         document.getElementById('mode-drum-wrapper').classList.add('decided');
-        badge.textContent = '🐾 コジ様のお告げが出た！ 🐾';
+        badge.textContent = '🎉 今日のスタイル決定！ 🎉';
         btn.disabled = false;
-        btn.textContent = '🔄 もう一回コジ様に聞く！';
+        btn.textContent = '🔄 もう一回回す！';
 
         nextAction.style.display = 'block';
         if (winner.mode === 'main') {
@@ -783,7 +783,7 @@
       const btn = document.getElementById(`${key}-spin-btn`);
       const badge = document.getElementById(`${key}-badge`);
       btn.disabled = true;
-      btn.textContent = 'コジ様が考え中...';
+      btn.textContent = '抽選中...';
       badge.textContent = '';
 
       if (key === 'main') {
